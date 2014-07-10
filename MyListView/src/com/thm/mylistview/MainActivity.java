@@ -3,9 +3,13 @@ package com.thm.mylistview;
 import java.util.ArrayList;
 
 import android.support.v7.app.ActionBarActivity;
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 public class MainActivity extends ActionBarActivity {
@@ -23,6 +27,46 @@ public class MainActivity extends ActionBarActivity {
  
         // 3. setListAdapter
         listView.setAdapter(adapter);
+        
+        
+     
+        
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Intent intent = null;
+			    switch (position) {
+			    case 0:
+			        intent = new Intent(view.getContext(), PuzzleDuellActivity.class);
+			        break;
+			    case 1:
+			        //intent = new Intent(view.getContext(), PuzzleDuellActivity.class);
+			        break;
+			    case 2:
+			        //intent = new Intent(view.getContext(), PuzzleDuellActivity.class);
+			        break;
+			    }
+			    if (intent != null) {
+			        startActivity(intent);
+			    } else {
+			    	// 1. Instantiate an AlertDialog.Builder with its constructor
+			    	AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+
+			    	// 2. Chain together various setter methods to set the dialog characteristics
+			    	builder.setMessage("Dieses Spiel muss noch gebacken werden ;)").setTitle("Spiel nicht vorhanden!");
+
+			    	// 3. Get the AlertDialog from create()
+			    	AlertDialog dialog = builder.create();
+			    	dialog.show();
+			    }
+				
+				
+			}
+        	
+        	                                
+        });
 
 		
 	}
