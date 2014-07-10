@@ -25,6 +25,10 @@
         <activity
             android:name=".PuzzleDuellActivity"
             android:label="@string/title_activity_puzzle_duell" >
+            
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
         </activity>
     </application>
 

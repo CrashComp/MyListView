@@ -1,17 +1,25 @@
 package com.thm.mylistview;
 
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+@SuppressLint("NewApi")
 public class PuzzleDuellActivity extends ActionBarActivity {
 
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_puzzle_duell);
+		
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		
 	}
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -29,6 +37,14 @@ public class PuzzleDuellActivity extends ActionBarActivity {
 		if (id == R.id.action_settings) {
 			return true;
 		}
+		//Back Button
+		switch (item.getItemId()) {
+	    // Respond to the action bar's Up/Home button
+	    case android.R.id.home:
+	        NavUtils.navigateUpFromSameTask(this);
+	        return true;
+	    }
+		
 		return super.onOptionsItemSelected(item);
 	}
 }
